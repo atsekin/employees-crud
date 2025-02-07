@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {
   Box,
+  Button,
   Card,
   CardContent,
   FormControl,
@@ -12,19 +13,14 @@ import {
 } from '@mui/material';
 
 import { useEmployeesQuery } from '../../api/useEmployeesQuery';
-import { MenuOption } from '../../types/common';
-import { EmployeeStatus } from '../../types/employees';
+import { AddEmployeeModal } from '../AddEmployeeModal/AddEmployeeModal';
 
-const statuses: MenuOption[] = [
-  { label: 'Working', value: EmployeeStatus.WORKING, },
-  { label: 'On Vacation', value: EmployeeStatus.ON_VACATION, },
-  { label: 'Lunch Time', value: EmployeeStatus.LUNCH_TIME, },
-  { label: 'Business Trip', value: EmployeeStatus.BUSINESS_TRIP, },
-];
+import { statuses } from './constants';
 
 export const Employees = () => {
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  const [selectedStatus, setSelectedStatus] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [selectedStatus, setSelectedStatus] = useState<string>('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data: cards } = useEmployeesQuery();
 
@@ -36,6 +32,7 @@ export const Employees = () => {
 
   return (
     <Box sx={{ maxWidth: 600, margin: "auto", padding: 2 }}>
+      <Button variant="contained" onClick={() => setIsModalOpen(true)}>Create</Button>
       <TextField
         fullWidth
         label="Type to search"
@@ -69,6 +66,7 @@ export const Employees = () => {
           </CardContent>
         </Card>
       ))}
+      <AddEmployeeModal open={isModalOpen} handleClose={() => setIsModalOpen(false)} />
     </Box>
   );
 }
