@@ -2,20 +2,18 @@ import { useState } from 'react';
 import {
   Box,
   Button,
-  Card,
-  CardContent,
   FormControl,
   InputLabel,
   MenuItem,
   Select,
   TextField,
-  Typography
 } from '@mui/material';
 
 import { useEmployeesQuery } from '../../api/useEmployeesQuery';
 import { AddEmployeeModal } from '../AddEmployeeModal/AddEmployeeModal';
 
 import { statuses } from './constants';
+import EmployeesGrid from '../EmployeesGrid/EmployeesGrid.tsx';
 
 export const Employees = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -31,7 +29,7 @@ export const Employees = () => {
   ) ?? [];
 
   return (
-    <Box sx={{ maxWidth: 600, margin: "auto", padding: 2 }}>
+    <Box sx={{ margin: "auto", padding: 2 }}>
       <Button variant="contained" onClick={() => setIsModalOpen(true)}>Create</Button>
       <TextField
         fullWidth
@@ -56,16 +54,18 @@ export const Employees = () => {
         </Select>
       </FormControl>
 
-      {filteredCards.map((card) => (
-        <Card key={card.id} sx={{ marginBottom: 2 }}>
-          <CardContent>
-            <Typography variant="h6">{card.name}</Typography>
-            <Typography color="text.secondary">
-              Status: {card.status}
-            </Typography>
-          </CardContent>
-        </Card>
-      ))}
+      <EmployeesGrid cards={filteredCards} />
+
+      {/*{filteredCards.map((card) => (*/}
+      {/*  <Card key={card.id} sx={{ marginBottom: 2 }}>*/}
+      {/*    <CardContent>*/}
+      {/*      <Typography variant="h6">{card.name}</Typography>*/}
+      {/*      <Typography color="text.secondary">*/}
+      {/*        Status: {card.status}*/}
+      {/*      </Typography>*/}
+      {/*    </CardContent>*/}
+      {/*  </Card>*/}
+      {/*))}*/}
       <AddEmployeeModal open={isModalOpen} handleClose={() => setIsModalOpen(false)} />
     </Box>
   );
