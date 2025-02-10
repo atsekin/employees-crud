@@ -1,7 +1,7 @@
-import { Avatar, Box, Card, CardContent, MenuItem, Select, styled, Typography } from '@mui/material';
-import { statuses } from '../Employees/constants.ts';
+import { Avatar, Box, Card, CardContent, MenuItem, Select, Stack, styled, Typography } from '@mui/material';
 import { EmployeeStatus } from '../../types/employees.ts';
 import { useUpdateEmployeeMutation } from '../../api/usePutEmployeeMutation.ts';
+import { statuses, iconsMap } from '../Employees/constants.tsx';
 
 type EmployeeCardProps = {
   id?: number;
@@ -58,11 +58,17 @@ export const EmployeeCard = ({
             sx={{ mt: 1, fontSize: 12 }}
             onChange={(event) => onStatusChange(event.target.value as EmployeeStatus)}
           >
-            {statuses.map(({ label, value }) => (
-              <MenuItem key={value} value={value}>
-                <Typography variant="body2">{label}</Typography>
-              </MenuItem>
-            ))}
+            {statuses.map(({ label, value }) => {
+              const Icon = iconsMap[value];
+              return (
+                <MenuItem key={value} value={value}>
+                  <Stack direction="row" alignItems="center">
+                    <Icon />
+                    <Typography variant="body2" ml={1}>{label}</Typography>
+                  </Stack>
+                </MenuItem>
+              )
+            })}
           </Select>
         </Box>
       </CardContent>

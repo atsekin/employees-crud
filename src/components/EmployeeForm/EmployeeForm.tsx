@@ -1,8 +1,19 @@
 import { useForm, Controller } from 'react-hook-form';
-import { TextField, MenuItem, Button, Select, InputLabel, FormControl, Box, Avatar } from '@mui/material';
+import {
+  TextField,
+  MenuItem,
+  Button,
+  Select,
+  InputLabel,
+  FormControl,
+  Box,
+  Avatar,
+  Stack,
+  Typography
+} from '@mui/material';
 
 import { EmployeeStatus } from '../../types/employees';
-import { statuses } from '../Employees/constants';
+import { iconsMap, statuses } from '../Employees/constants';
 import { usePostEmployeeMutation } from '../../api/usePostEmployeeMutation';
 
 type EmployeeFormData = {
@@ -67,9 +78,17 @@ const EmployeeForm = ({
           <FormControl fullWidth sx={{ mb: 2 }}>
             <InputLabel>Status</InputLabel>
             <Select {...field} label="Status">
-              {statuses.map(({ label, value }) => (
-                <MenuItem key={value} value={value}>{label}</MenuItem>
-              ))}
+              {statuses.map(({ label, value }) => {
+                const Icon = iconsMap[value];
+                return (
+                  <MenuItem key={value} value={value}>
+                    <Stack direction="row" alignItems="center">
+                      <Icon />
+                      <Typography variant="body2" ml={1}>{label}</Typography>
+                    </Stack>
+                  </MenuItem>
+                )
+              })}
             </Select>
           </FormControl>
         )}
