@@ -1,11 +1,9 @@
-import axios from 'axios';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-// const API_URL = 'http://localhost:3001';
-const API_URL = 'https://jsonplaceholder.typicode.com';
+import { axiosInstance } from './apiClient';
 
 export const deleteEmployee = async (id: string): Promise<void> => {
-  await axios.delete(`${API_URL}/users/${id}`);
+  await axiosInstance.delete(`/users/${id}`);
 };
 
 export const useDeleteEmployeeMutation = () => {

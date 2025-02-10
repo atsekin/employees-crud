@@ -1,12 +1,10 @@
-import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 
-import { Employee } from '../types/employees.ts';
-
-const API_URL = 'http://localhost:3000/api';
+import { axiosInstance } from './apiClient';
+import { Employee } from '../types/employees';
 
 export const fetchEmployees = async (): Promise<Employee[]> => {
-  const { data: { users } } = await axios.get(`${API_URL}/users/all`);
+  const { data: { users } } = await axiosInstance.get(`/users/all`);
   return users;
 };
 

@@ -1,12 +1,10 @@
-import axios from 'axios';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { Employee } from '../types/employees.ts';
-
-const API_URL = 'http://localhost:3000/api';
+import { axiosInstance } from './apiClient';
+import { Employee } from '../types/employees';
 
 export const createEmployee = async (employee: Employee): Promise<Employee> => {
-  const { data } = await axios.post(`${API_URL}/users/add`, {
+  const { data } = await axiosInstance.post(`/users`, {
     user: {
       ...employee,
       id: -1,
