@@ -10,10 +10,10 @@ import {
   TextField
 } from '@mui/material';
 
-import { statuses } from './Employees/constants';
-import { EmployeeStatus } from '../types/employees';
-import { PlusIcon } from './icons/PlusIcon';
-import { SearchIcon } from './icons/SearchIcon';
+import { statuses } from '../Employees/constants.tsx';
+import { EmployeeStatus } from '../../types/employees.ts';
+import { PlusIcon } from '../icons/PlusIcon.tsx';
+import { SearchIcon } from '../icons/SearchIcon.tsx';
 
 type TopPanelProps = {
   handleCreate: () => void;

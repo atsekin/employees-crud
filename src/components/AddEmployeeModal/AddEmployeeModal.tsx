@@ -1,6 +1,8 @@
-import { Typography } from '@mui/material';
-import { Modal } from '../Modal/Modal.tsx';
-import EmployeeForm from '../EmployeeForm/EmployeeForm.tsx';
+import { Box, IconButton, Typography } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+
+import { Modal } from '../Modal/Modal';
+import EmployeeForm from '../EmployeeForm/EmployeeForm';
 
 type AddEmployeeModalProps = {
   open: boolean;
@@ -13,7 +15,12 @@ export const AddEmployeeModal = ({
 }: AddEmployeeModalProps) => {
   return (
     <Modal open={open} handleClose={handleClose}>
-      <Typography variant="h6">Create Employee</Typography>
+      <Box sx={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}>
+        <Typography variant="h6">Create Employee</Typography>
+        <IconButton onClick={handleClose}>
+          <CloseIcon />
+        </IconButton>
+      </Box>
       <EmployeeForm onSuccess={handleClose} />
     </Modal>
   )

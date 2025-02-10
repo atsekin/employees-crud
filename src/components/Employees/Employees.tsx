@@ -5,11 +5,11 @@ import { useEmployeesQuery } from '../../api/useEmployeesQuery';
 import { AddEmployeeModal } from '../AddEmployeeModal/AddEmployeeModal';
 
 import EmployeesGrid from '../EmployeesGrid/EmployeesGrid';
-import { TopPanel } from '../TopPanel';
+import { TopPanel } from '../TopPanel/TopPanel';
 
 const StyledTopPanelWrapper = styled(Stack)(() => ({
   '& > *:first-child': {
-    marginTop: '30px', marginBottom: '54px'
+    marginBottom: '54px'
   }
 }));
 

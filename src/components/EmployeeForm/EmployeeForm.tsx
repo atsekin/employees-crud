@@ -43,17 +43,14 @@ const EmployeeForm = ({
   const imgURL = watch('img');
 
   const onSubmit = (data: EmployeeFormData) => {
-    console.log('Data:', data);
-    if (!data.id) {
-      createEmployee(data, {
-        onSuccess
-      })
-    }
+    createEmployee(data, {
+      onSuccess
+    });
     reset();
   };
 
   return (
-    <Box sx={{ maxWidth: 400, mx: 'auto', mt: 4, p: 2, border: '1px solid #ccc', borderRadius: 2 }}>
+    <Box sx={{ maxWidth: 400, mx: 'auto', padding: '16px 0' }}>
       <Controller
         name="name"
         control={control}
@@ -121,7 +118,7 @@ const EmployeeForm = ({
         </Box>
       )}
 
-      <Button variant="contained" color="primary" fullWidth onClick={handleSubmit(onSubmit)}>
+      <Button variant="contained" sx={{ backgroundColor: '#109CF1' }} fullWidth onClick={handleSubmit(onSubmit)}>
         Submit
       </Button>
     </Box>

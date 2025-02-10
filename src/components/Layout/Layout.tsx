@@ -36,7 +36,7 @@ export const Layout = () => {
       </AppBar>
 
       <MainContainer>
-        <Container sx={{ width: '1082px' }}>
+        <Container sx={{ width: '1082px', padding: '30px 0' }}>
           <Employees />
         </Container>
       </MainContainer>

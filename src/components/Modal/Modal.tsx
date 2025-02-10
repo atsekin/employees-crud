@@ -40,9 +40,6 @@ export const Modal = ({
           }}
         >
           {children}
-          <Button sx={{ mt: 2 }} variant="contained" onClick={handleClose}>
-            Close
-          </Button>
         </Box>
       </Fade>
     </MuiModal>
