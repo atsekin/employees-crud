@@ -1,11 +1,11 @@
 import { Button, Divider, FormControl, InputLabel, Select, Stack, styled, TextField } from '@mui/material';
 
-export const StyledCreateButton = styled(Button)(() => ({
+export const StyledCreateButton = styled(Button)(({ theme }) => ({
   textTransform: 'none',
   width: '160px',
   fontWeight: 600,
   fontSize: '16px',
-  backgroundColor: '#109CF1',
+  backgroundColor: theme.palette.primary.main,
 }));
 
 export const StyledStack = styled(Stack)(() => ({
@@ -30,8 +30,8 @@ export const StyledSelectControl = styled(FormControl)(() => ({
   minWidth: 200,
 }));
 
-export const StyledSelectLabel = styled(InputLabel)(() => ({
-  color: '#6A707E',
+export const StyledSelectLabel = styled(InputLabel)(({ theme }) => ({
+  color: theme.palette.text.secondary,
   '&.MuiFormLabel-filled, &.Mui-focused.MuiInputLabel-formControl': {
     display: 'none',
   },

@@ -1,30 +1,30 @@
 import { AppBar, Box, Button, Container, styled, Toolbar, Typography } from '@mui/material';
 
-export const StyledTitle = styled(Typography)({
+export const StyledTitle = styled(Typography)(({ theme }) => ({
   fontWeight: 'bold',
   fontSize: '24px',
-  color: '#109CF1',
-});
+  fontFamily: '"Open Sans", sans-serif',
+  color: theme.palette.primary.main,
+}));
 
-export const StyledLogoutButton = styled(Button)({
-  borderColor: '#109CF1',
-  color: '#109CF1',
+export const StyledLogoutButton = styled(Button)(({ theme }) => ({
+  borderColor: theme.palette.primary.main,
+  color: theme.palette.primary.main,
   textTransform: 'none',
   '&:hover': {
     borderColor: '#0D8BD8',
     backgroundColor: 'rgba(16, 156, 241, 0.1)',
   },
-});
+}));
 
-export const StyledMainContainer = styled(Box)({
-  backgroundColor: '#F5F6F8',
+export const StyledMainContainer = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.background.default,
   height: '100%',
   minHeight: 'calc(100vh - 60px)',
   width: '100%'
-});
+}));
 
 export const StyledAppBar = styled(AppBar)(() => ({
-  borderBottom: '1px solid #ddd',
   backgroundColor: 'transparent',
   position: 'static',
 }));

@@ -17,8 +17,8 @@ export const StyledAvatar = styled(Avatar)(() => ({
   height: 80,
 }));
 
-export const StyledSubmitButton = styled(Button)(() => ({
-  backgroundColor: '#109CF1',
+export const StyledSubmitButton = styled(Button)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
   width: '100%',
   textTransform: 'none',
 }));
