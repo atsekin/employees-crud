@@ -1,10 +1,4 @@
-import {
-  Modal as MuiModal,
-  Box,
-  Fade,
-  Backdrop,
-  Button,
-} from "@mui/material";
+import { Modal as MuiModal, Box, Fade, Backdrop } from "@mui/material";
 
 type ModalProps = {
   open: boolean;

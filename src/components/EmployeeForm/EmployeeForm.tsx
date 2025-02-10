@@ -1,20 +1,11 @@
 import { useForm, Controller } from 'react-hook-form';
-import {
-  TextField,
-  MenuItem,
-  Button,
-  Select,
-  InputLabel,
-  FormControl,
-  Box,
-  Avatar,
-  Stack,
-  Typography
-} from '@mui/material';
+import { TextField, MenuItem, Select, InputLabel, FormControl, Stack, Typography } from '@mui/material';
 
 import { EmployeeStatus } from '../../types/employees';
 import { iconsMap, statuses } from '../Employees/constants';
 import { usePostEmployeeMutation } from '../../api/usePostEmployeeMutation';
+
+import { StyledBox, StyledImgBox, StyledAvatar, StyledSubmitButton } from './styled';
 
 type EmployeeFormData = {
   id?: number;
@@ -50,7 +41,7 @@ const EmployeeForm = ({
   };
 
   return (
-    <Box sx={{ maxWidth: 400, mx: 'auto', padding: '16px 0' }}>
+    <StyledBox>
       <Controller
         name="name"
         control={control}
@@ -113,15 +104,15 @@ const EmployeeForm = ({
       />
 
       {imgURL && (
-        <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
-          <Avatar src={imgURL} sx={{ width: 80, height: 80 }} />
-        </Box>
+        <StyledImgBox>
+          <StyledAvatar src={imgURL} />
+        </StyledImgBox>
       )}
 
-      <Button variant="contained" sx={{ backgroundColor: '#109CF1' }} fullWidth onClick={handleSubmit(onSubmit)}>
+      <StyledSubmitButton variant="contained" onClick={handleSubmit(onSubmit)}>
         Submit
-      </Button>
-    </Box>
+      </StyledSubmitButton>
+    </StyledBox>
   );
 };
 

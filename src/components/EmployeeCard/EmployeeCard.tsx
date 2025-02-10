@@ -1,7 +1,10 @@
-import { Avatar, Box, Card, CardContent, MenuItem, Select, Stack, styled, Typography } from '@mui/material';
-import { EmployeeStatus } from '../../types/employees.ts';
-import { useUpdateEmployeeMutation } from '../../api/usePutEmployeeMutation.ts';
-import { statuses, iconsMap } from '../Employees/constants.tsx';
+import { MenuItem, Stack, Typography } from '@mui/material';
+
+import { EmployeeStatus } from '../../types/employees';
+import { useUpdateEmployeeMutation } from '../../api/usePutEmployeeMutation';
+import { statuses, iconsMap } from '../Employees/constants';
+
+import { StyledCard, StyledCardContent, StyledAvatar, StyledBox, StyledSelect } from './styled';
 
 type EmployeeCardProps = {
   id?: number;
@@ -9,17 +12,6 @@ type EmployeeCardProps = {
   status: EmployeeStatus;
   img: string;
 }
-
-const StyledCard = styled(Card)({
-  width: '320px',
-  transition: '0.3s',
-  borderRadius: '10px',
-  cursor: 'pointer',
-  boxShadow: '0px 6px 15px rgba(174, 174, 174, 0.5)',
-  '&:hover': {
-    boxShadow: '0px 6px 15px rgba(16, 156, 241, 0.5)',
-  },
-});
 
 export const EmployeeCard = ({
   id,
@@ -40,22 +32,15 @@ export const EmployeeCard = ({
 
   return (
     <StyledCard>
-      <CardContent sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', p: '24px 20px' }}>
-        <Avatar src={img} sx={{ width: 120, height: 120 }} />
-        <Box sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-start',
-          marginLeft: '24px',
-          width: '100%'
-        }}>
+      <StyledCardContent>
+        <StyledAvatar src={img} />
+        <StyledBox>
           <Typography variant="body1" fontWeight={600}>{name}</Typography>
-          <Select
+          <StyledSelect
             fullWidth
             variant="standard"
             defaultValue={status}
             size="small"
-            sx={{ mt: 1, fontSize: 12 }}
             onChange={(event) => onStatusChange(event.target.value as EmployeeStatus)}
           >
             {statuses.map(({ label, value }) => {
@@ -69,9 +54,9 @@ export const EmployeeCard = ({
                 </MenuItem>
               )
             })}
-          </Select>
-        </Box>
-      </CardContent>
+          </StyledSelect>
+        </StyledBox>
+      </StyledCardContent>
     </StyledCard>
   )
 }

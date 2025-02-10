@@ -2,7 +2,7 @@ import { Grid } from '@mui/material';
 
 import { Employee } from '../../types/employees';
 
-import { EmployeeCard } from '../EmployeeCard/EmployeeCard.tsx';
+import { EmployeeCard } from '../EmployeeCard/EmployeeCard';
 
 type CardsGridProps = {
   cards: Employee[];

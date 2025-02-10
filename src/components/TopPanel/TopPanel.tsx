@@ -1,19 +1,11 @@
-import {
-  Button,
-  Divider,
-  FormControl,
-  InputAdornment,
-  InputLabel,
-  MenuItem,
-  Select,
-  Stack,
-  TextField
-} from '@mui/material';
+import { InputAdornment, MenuItem, Stack } from '@mui/material';
 
-import { statuses } from '../Employees/constants.tsx';
-import { EmployeeStatus } from '../../types/employees.ts';
-import { PlusIcon } from '../icons/PlusIcon.tsx';
-import { SearchIcon } from '../icons/SearchIcon.tsx';
+import { statuses } from '../Employees/constants';
+import { EmployeeStatus } from '../../types/employees';
+import { PlusIcon } from '../icons/PlusIcon';
+import { SearchIcon } from '../icons/SearchIcon';
+
+import { StyledCreateButton, StyledStack, StyledTextField, StyledDivider, StyledSelectControl, StyledSelectLabel, StyledSelect } from './styled';
 
 type TopPanelProps = {
   handleCreate: () => void;
@@ -28,30 +20,19 @@ export const TopPanel = ({
 }: TopPanelProps) => {
   return (
     <Stack direction="row" spacing={2}>
-      <Button
+      <StyledCreateButton
         variant="contained"
         onClick={handleCreate}
         endIcon={<PlusIcon />}
-        sx={{
-          textTransform: 'none',
-          width: '160px',
-          fontWeight: 600,
-          fontSize: '16px',
-          backgroundColor: '#109CF1',
-        }}
       >
         Create
-      </Button>
-      <Stack direction="row" spacing={2} width="100%" sx={{ backgroundColor: '#fff' }}>
-        <TextField
+      </StyledCreateButton>
+      <StyledStack direction="row" spacing={2}>
+        <StyledTextField
           placeholder="Type to search"
           variant="outlined"
           onChange={(e) => handleSearch(e.target.value)}
           fullWidth
-          sx={{
-            marginBottom: 0,
-            '& .MuiOutlinedInput-root fieldset': { border: 'none' },
-          }}
           slotProps={{
             input: {
               startAdornment: (
@@ -62,37 +43,23 @@ export const TopPanel = ({
             },
           }}
         />
-        <Divider
+        <StyledDivider
           orientation="vertical"
           variant="middle"
-          flexItem sx={{
-            height: '24px',
-            alignSelf: 'center',
-            color: '#DEDEDE'
-          }}
+          flexItem
         />
-        <FormControl sx={{ marginBottom: 0, minWidth: 200 }} variant="outlined">
-          <InputLabel
-            sx={{
-              color: '#6A707E',
-              '&.MuiFormLabel-filled, &.Mui-focused.MuiInputLabel-formControl': {
-                display: 'none',
-              },
-            }}
-          >Filter by status</InputLabel>
-          <Select
+        <StyledSelectControl variant="outlined">
+          <StyledSelectLabel>Filter by status</StyledSelectLabel>
+          <StyledSelect
             onChange={(e) => handleFilter(e.target.value as EmployeeStatus)}
-            sx={{
-              '&.MuiOutlinedInput-root fieldset': { border: 'none' },
-            }}
           >
             <MenuItem value="">All</MenuItem>
             {statuses.map(({ label, value }) => (
               <MenuItem key={value} value={value}>{label}</MenuItem>
             ))}
-          </Select>
-        </FormControl>
-      </Stack>
+          </StyledSelect>
+        </StyledSelectControl>
+      </StyledStack>
     </Stack>
   );
 }

@@ -1,17 +1,11 @@
 import { useState } from 'react';
-import { Stack, styled } from '@mui/material';
 
 import { useEmployeesQuery } from '../../api/useEmployeesQuery';
 import { AddEmployeeModal } from '../AddEmployeeModal/AddEmployeeModal';
 
 import EmployeesGrid from '../EmployeesGrid/EmployeesGrid';
 import { TopPanel } from '../TopPanel/TopPanel';
-
-const StyledTopPanelWrapper = styled(Stack)(() => ({
-  '& > *:first-child': {
-    marginBottom: '54px'
-  }
-}));
+import { StyledTopPanelWrapper } from './styled';
 
 export const Employees = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
