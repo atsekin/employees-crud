@@ -1,4 +1,6 @@
-
+body {
+  margin: 0;
+}
 
 .logo {
   height: 6em;

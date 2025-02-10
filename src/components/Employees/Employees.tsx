@@ -1,11 +1,17 @@
 import { useState } from 'react';
-import { Stack } from '@mui/material';
+import { Stack, styled } from '@mui/material';
 
 import { useEmployeesQuery } from '../../api/useEmployeesQuery';
 import { AddEmployeeModal } from '../AddEmployeeModal/AddEmployeeModal';
 
 import EmployeesGrid from '../EmployeesGrid/EmployeesGrid';
 import { TopPanel } from '../TopPanel';
+
+const StyledTopPanelWrapper = styled(Stack)(() => ({
+  '& > *:first-child': {
+    marginTop: '30px', marginBottom: '54px'
+  }
+}));
 
 export const Employees = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -21,7 +27,7 @@ export const Employees = () => {
   ) ?? [];
 
   return (
-    <Stack spacing={2}>
+    <StyledTopPanelWrapper spacing={2}>
       <TopPanel
         handleCreate={() => setIsModalOpen(true)}
         handleFilter={setSelectedStatus}
@@ -29,6 +35,6 @@ export const Employees = () => {
       />
       <EmployeesGrid cards={filteredCards} />
       <AddEmployeeModal open={isModalOpen} handleClose={() => setIsModalOpen(false)} />
-    </Stack>
+    </StyledTopPanelWrapper>
   );
 }

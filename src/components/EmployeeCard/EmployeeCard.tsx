@@ -11,11 +11,13 @@ type EmployeeCardProps = {
 }
 
 const StyledCard = styled(Card)({
+  width: '320px',
   transition: '0.3s',
   borderRadius: '10px',
+  cursor: 'pointer',
+  boxShadow: '0px 6px 15px rgba(174, 174, 174, 0.5)',
   '&:hover': {
-    border: '2px solid',
-    borderImage: 'linear-gradient(90deg, #109CF1, #76C1F3) 1',
+    boxShadow: '0px 6px 15px rgba(16, 156, 241, 0.5)',
   },
 });
 
@@ -38,19 +40,27 @@ export const EmployeeCard = ({
 
   return (
     <StyledCard>
-      <CardContent sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Avatar src={img} sx={{ width: 60, height: 60, mb: 2 }} />
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <Typography variant="h6">{name}</Typography>
+      <CardContent sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', p: '24px 20px' }}>
+        <Avatar src={img} sx={{ width: 120, height: 120 }} />
+        <Box sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          marginLeft: '24px',
+          width: '100%'
+        }}>
+          <Typography variant="body1" fontWeight={600}>{name}</Typography>
           <Select
+            fullWidth
+            variant="standard"
             defaultValue={status}
             size="small"
-            sx={{ mt: 1, width: '80%' }}
+            sx={{ mt: 1, fontSize: 12 }}
             onChange={(event) => onStatusChange(event.target.value as EmployeeStatus)}
           >
             {statuses.map(({ label, value }) => (
               <MenuItem key={value} value={value}>
-                {label}
+                <Typography variant="body2">{label}</Typography>
               </MenuItem>
             ))}
           </Select>

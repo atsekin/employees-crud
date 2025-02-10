@@ -12,9 +12,9 @@ const CardsGrid = ({
   cards,
 }: CardsGridProps) => {
   return (
-    <Grid container spacing={2} columns={{ xs: 1, sm: 2, md: 3, lg: 4 }}>
+    <Grid container columns={3} columnGap={4.5} rowGap={6}>
       {cards.map((card) => (
-        <Grid item xs={1} key={card.id}>
+        <Grid item key={card.id}>
           <EmployeeCard
             id={card.id}
             name={card.name}
