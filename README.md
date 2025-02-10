@@ -1,50 +1,29 @@
-# React + TypeScript + Vite
+# Employees test task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend part of employees test task.
 
-Currently, two official plugins are available:
+## Explanations
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Store managers aka Redux/Zustand/Valtio were not used, becase here we don't share state between views and don't persist data. React query stores response
 
-## Expanding the ESLint configuration
+Design was extracted from pdf file to figma, so it was possible to extract indents and colors, but not fonts, so fonts were used approximately
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+I decided to use PUT request for user updates, and POST only for creation, looks more standard
 
-- Configure the top-level `parserOptions` property like this:
+Modal of user creation and "Lunch time" status icon were missed in pdf, so I implemented them on my own
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Running app
+To see full experience, please also clone https://github.com/atsekin/employees-api (its simple backend server to handle CRUD operations)
+Please use port 5173 for frontend (its necessary for cors settings) and 3000 for backend
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+To run FE app, please run
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+`pnpm install`
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+`pnpm run dev`
+
+To run backend
+
+`npm install`
+
+`npm run dev`
